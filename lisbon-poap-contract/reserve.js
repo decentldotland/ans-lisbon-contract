@@ -3,6 +3,8 @@ export async function handle(state, action) {
 
   const requests = state.requests;
   const allowedCharCodes = state.allowedCharCodes;
+  const reserved = state.reserved;
+  const limit = state.limit;
 
   const ERROR_INVALID_DATA_TYPE = `THE_PASSED_ARGUMENT_MUST_BE_A_STRING`;
   const ERROR_INVALID_EVM_ADDRESS_SYNTAX = `INVALID_EVM_ADDRESS_SYNTAX`;
@@ -10,8 +12,7 @@ export async function handle(state, action) {
   const ERROR_INVALID_CHARCODE = `ANS_LABEL_HAS_UNSUPPORTED_CHAR_CODE`;
   const ERROR_INVALID_STRING_LENGTH = `INVALID_ANS_LABEL_LENGTH`;
   const ERROR_ANS_ALREADY_RESERVED = `THIS_ANS_DOMAIN_HAS_BEEN_ALREADY_RESERVED`;
-
-
+  const ERROR_REACHED_RES_LIMIT = `THE_CONTRACT_REACHED_MAX_NB_OF_RESERVATIONS`;
 
   if (input.function === "reserve") {
     const ans = input.ans;
@@ -21,6 +22,8 @@ export async function handle(state, action) {
     _reservedAnsDomains(ans);
     _validateEvmAddress(evm_address);
     _multiEntry(evm_address);
+
+    _checkReservationsLimit();
 
     requests.push({
       evm_address: evm_address,
@@ -33,7 +36,7 @@ export async function handle(state, action) {
 
   function _reservedAnsDomains(domain) {
     const reservedDomains = requests.map((request) => request.reserved_ans);
-    
+
     if (reservedDomains.includes(domain)) {
       throw new ContractError(ERROR_ANS_ALREADY_RESERVED);
     }
@@ -71,5 +74,10 @@ export async function handle(state, action) {
     if (normalizedUsername.length < 2 || normalizedUsername.length > 15) {
       throw new ContractError(ERROR_INVALID_STRING_LENGTH);
     }
+  }
+
+  function _checkReservationsLimit() {
+    ContractAssert(reserved < limit, ERROR_REACHED_RES_LIMIT);
+    state.reserved += 1;
   }
 }
