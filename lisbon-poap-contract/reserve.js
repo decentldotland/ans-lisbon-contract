@@ -28,7 +28,7 @@ export async function handle(state, action) {
     requests.push({
       evm_address: evm_address,
       reserved_ans: ans,
-      block_timestamp: SmartWeave.block.timestamp,
+      timestamp: EXM.getDate().getTime(),
     });
 
     return { state };
