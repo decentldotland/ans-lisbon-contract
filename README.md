@@ -1,3 +1,3 @@
 # ans-lisbon-airdrop
 
-### testing contract: [QHJ3EeCJokrf1nbnhMgoK4P_hu9xLPK5UfJww23HFsk](https://api.exm.dev/read/QHJ3EeCJokrf1nbnhMgoK4P_hu9xLPK5UfJww23HFsk)
+### testing contract: [kye-I4XnUb5isVO0KX9Edp3Bjq-uv3RuWwnUkF9MRmU](https://api.exm.dev/read/kye-I4XnUb5isVO0KX9Edp3Bjq-uv3RuWwnUkF9MRmU)
