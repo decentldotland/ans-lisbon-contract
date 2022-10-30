@@ -9,7 +9,7 @@
 The smart contract of [ar.page](https://ar.page/claim) Lisbon's ANS POAP event.
 
 ## Contract
-- address [kye-I4XnUb5isVO0KX9Edp3Bjq-uv3RuWwnUkF9MRmU](https://api.exm.dev/read/kye-I4XnUb5isVO0KX9Edp3Bjq-uv3RuWwnUkF9MRmU)
+- address [5Kf8dbUbqMsaqZKGqj9zp0yjaP-pBO57FQbJ0iyGYT0](https://api.exm.dev/read/5Kf8dbUbqMsaqZKGqj9zp0yjaP-pBO57FQbJ0iyGYT0)
 - source code: [./lisbon-poap-contract.reserve.js](./lisbon-poap-contract.reserve.js)
 - deployment: [EXM](https://exm.dev)
 
